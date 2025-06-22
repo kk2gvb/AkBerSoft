@@ -12,6 +12,7 @@ int main (){
     zmq_connect(req, "tcp://localhost:5015");
     
     //Получение отправляемого сообщения
+    printf("Enter your message: ");
     char Send_msg[51];
     if (fgets(Send_msg, sizeof(Send_msg), stdin)){
         zmq_send(req, Send_msg, strlen(Send_msg), 0);
