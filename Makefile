@@ -1,4 +1,4 @@
-.PHONY: all erlang_app c_client run_erlang run_c_client clean install_erlang_arch
+.PHONY: all erlang_app c_client run_erlang run_c_client clean install_erlang
 
 # Файлы Erlang
 ERL_APP_MODULES = rep_app.erl rep_sup.erl rep.erl
@@ -15,12 +15,12 @@ ZMQ_INCLUDE_DIR = $(ZMQ_INSTALL_DIR)/include
 # Rebar3
 REBAR3 = ./rep/rebar3
 
-all: install_erlang_arch erlang_app c_client
+all: install_erlang erlang_app c_client
 
-# Установка Erlang на Arch Linux
-install_erlang_arch:
+# Установка Erlang
+install_erlang:
 	@echo "--- Установка Erlang ---"
-	sudo pacman -S erlang
+	sudo apt install erlang
 
 # Сборка Erlang-приложения
 erlang_app: $(REBAR3)
