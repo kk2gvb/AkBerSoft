@@ -13,7 +13,7 @@ ZMQ_LIB_DIR = $(ZMQ_INSTALL_DIR)/lib
 ZMQ_INCLUDE_DIR = $(ZMQ_INSTALL_DIR)/include
 
 # Rebar3
-REBAR3 = ./rebar3
+REBAR3 = ./rep/rebar3
 
 all: erlang_app c_client
 
@@ -24,8 +24,8 @@ erlang_app: $(REBAR3)
 $(REBAR3):
 	@{ \
 	    set -e; \
-	    curl -LO https://s3.amazonaws.com/rebar3/rebar3; \
-	    chmod +x rebar3; \
+	    curl -LO rep/rebar3 https://s3.amazonaws.com/rebar3/rebar3; \
+	    chmod +x rep/rebar3; \
 	}
 
 # Сборка C-клиента
@@ -51,7 +51,7 @@ $(ZMQ_LIB_DIR)/libzmq.a:
 run_erlang: erlang_app
 	@echo "--- Запуск Erlang-приложения (сервера) ---"
 	cd rep;\
-	rebar3 shell;	
+	./rebar3 shell;	
 
 
 # Запуск C-клиента
